@@ -1,4 +1,4 @@
-//#include "StopWatch.h"
+#include "StopWatch.h"
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -27,8 +27,7 @@ vector<int> randomVector(){
     mt19937 gen(randomStringInFile());
     uniform_int_distribution<>dis(1,100);
     for(auto i : randomVector){
-        randomVector[i] = rand() % 100;
-        cout << randomVector[i] << endl;
+        randomVector[i] = dis(gen);
     }
     return randomVector;
 }
