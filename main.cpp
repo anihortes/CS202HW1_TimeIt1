@@ -34,15 +34,21 @@ vector<long long> randomVector(const int &vectorSize){
 }
 
 int main() {
-    long long vectorSize = 100000000;
+    long long vectorSize = 10000000;
     vector<long long> timingVector = randomVector(vectorSize);
     StopWatch timer;
     random_device randomStringInFile;
     mt19937 gen(randomStringInFile());
     uniform_int_distribution<>dis(1,vectorSize);
+    sort(timingVector.begin(), timingVector.end());
     long long  needle[] = {timingVector[timingVector.size()-2], timingVector[timingVector.size()-1]};
     timer.start();
     search(timingVector.begin(), timingVector.end(), needle, needle+1);
+    timer.stop();
+    cout << "time to find using search function: " << timer.timeMilliSec() << endl;
+    timer.start();
+    binary_search(timingVector.begin(), timingVector.end(), 562356);
+    long long temp = timingVector[dis(gen)];
     timer.stop();
     cout << "time to find using search function: " << timer.timeMilliSec() << endl;
     return 0;
