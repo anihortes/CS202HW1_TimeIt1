@@ -18,14 +18,15 @@ using std::uniform_int_distribution;
 #include <map>
 using std::map;
 
-vector<int> randomVector(){
-    vector <int> randomVector;
-    for (auto i =0; i <100; ++i){
+vector<long long> randomVector(const int &vectorSize){
+    vector <long long> randomVector;
+    for (auto i =0; i <vectorSize; ++i){
         randomVector.push_back(i);
+       //cout << "vector: " << randomVector[i] << endl;
     }
     random_device randomStringInFile;
     mt19937 gen(randomStringInFile());
-    uniform_int_distribution<>dis(1,100);
+    uniform_int_distribution<>dis(1,vectorSize);
     for(auto i : randomVector){
         randomVector[i] = dis(gen);
     }
@@ -33,9 +34,17 @@ vector<int> randomVector(){
 }
 
 int main() {
-    randomVector();
-    
-    std::cout << "Hello, World!" << std::endl;
+    long long vectorSize = 100000000;
+    vector<long long> timingVector = randomVector(vectorSize);
+    StopWatch timer;
+    random_device randomStringInFile;
+    mt19937 gen(randomStringInFile());
+    uniform_int_distribution<>dis(1,vectorSize);
+    long long  needle[] = {timingVector[timingVector.size()-2], timingVector[timingVector.size()-1]};
+    timer.start();
+    search(timingVector.begin(), timingVector.end(), needle, needle+1);
+    timer.stop();
+    cout << "time to find using search function: " << timer.timeMilliSec() << endl;
     return 0;
 }
 
