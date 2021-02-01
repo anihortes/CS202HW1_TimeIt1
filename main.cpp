@@ -8,7 +8,7 @@ using std::vector;
 using std::sort;
 using std::search;
 using std::binary_search;
-using std::rotate;
+using std::reverse;
 #include <fstream>
 using std::ifstream;
 #include <random>
@@ -40,7 +40,10 @@ int main() {
     random_device randomStringInFile;
     mt19937 gen(randomStringInFile());
     uniform_int_distribution<>dis(1,vectorSize);
+    timer.start();
     sort(timingVector.begin(), timingVector.end());
+    timer.stop();
+    cout << "time to sort using sort function: " << timer.timeMilliSec() << endl;\
     long long  needle[] = {timingVector[timingVector.size()-2], timingVector[timingVector.size()-1]};
     timer.start();
     search(timingVector.begin(), timingVector.end(), needle, needle+1);
@@ -50,7 +53,11 @@ int main() {
     binary_search(timingVector.begin(), timingVector.end(), 562356);
     long long temp = timingVector[dis(gen)];
     timer.stop();
-    cout << "time to find using search function: " << timer.timeMilliSec() << endl;
+    cout << "time to find using binary_search function: " << timer.timeMilliSec() << endl;
+    timer.start();
+    reverse(timingVector.begin(), timingVector.end());
+    timer.stop();
+    cout << "time to rotate: " << timer.timeMilliSec() << endl;
     return 0;
 }
 
