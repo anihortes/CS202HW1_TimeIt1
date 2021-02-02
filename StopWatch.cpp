@@ -10,18 +10,14 @@
  */
 
 #include "StopWatch.h"
-#include <iostream>
 #include <chrono>
-#include <math.h>
 using std::cout;
 using std::endl;
 
 StopWatch::StopWatch(){
-    //cout << "Default constructor" << endl;
 }
 
 StopWatch::~StopWatch(){
-    //cout << "Destructor is called on" << endl;
 }
 
 std::chrono::high_resolution_clock::time_point StopWatch::start(){

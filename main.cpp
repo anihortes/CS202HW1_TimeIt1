@@ -15,8 +15,6 @@ using std::ifstream;
 using std::random_device;
 using std::mt19937;
 using std::uniform_int_distribution;
-#include <map>
-using std::map;
 using std::pair;
 #include <string>
 using std::string;
@@ -25,7 +23,6 @@ vector<long long> randomVector(const int &vectorSize){
     vector <long long> randomVector;
     for (auto i =0; i <vectorSize; ++i){
         randomVector.push_back(i);
-       //cout << "vector: " << randomVector[i] << endl;
     }
     random_device randomStringInFile;
     mt19937 gen(randomStringInFile());
@@ -105,4 +102,3 @@ int main() {
     writeToExcel((timingData));
     return 0;
 }
-
