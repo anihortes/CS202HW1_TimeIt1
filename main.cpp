@@ -1,3 +1,9 @@
+/*
+ * A. Harrison Owen
+ * CS 202: Homework 1
+ * Professor Hartman
+ * 02/05/2021
+ */
 #include "StopWatch.h"
 #include <iostream>
 using std::cout;
@@ -53,7 +59,7 @@ void timingRun(const long long &vectorSize,
     searchTime = timer.timeMilliSec();
 
     timer.start();
-    binary_search(timingVector.begin(), timingVector.end(), 562356);
+    binary_search(timingVector.begin(), timingVector.end(), dis(gen));
     timer.stop();
     binarySearchTime = timer.timeMilliSec();
 
